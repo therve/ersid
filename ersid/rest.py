@@ -14,7 +14,10 @@ class Service(object):
 
     @app.route('/<key>', methods=['GET'])
     def get_key(self, request, key):
-        return self._storage[key]
+        if key in self.storage:
+            return self.storage[key]
+        request.setResponseCode(404)
+        return 'Not found'
 
 
 __all__ = ['Service']
