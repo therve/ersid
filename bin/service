@@ -2,9 +2,10 @@
 
 from twisted.internet import reactor
 
-from ersid import backdoor, rest
+from ersid import backdoor, rest, dump
 
 service = rest.Service()
 reactor.listenTCP(8022, backdoor.makeFactory({'service': service}))
+dump.startLoop(10, service, '/tmp/dump')
 
 service.app.run('localhost', 8080)
