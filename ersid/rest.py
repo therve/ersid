@@ -1,17 +1,20 @@
-from klein import route, resource
+from klein import Klein
 
 
-_storage = {}
+class Service(object):
+    app = Klein()
+
+    def __init__(self):
+        self.storage = {}
+
+    @app.route('/<key>', methods=['POST'])
+    def set_key(self, request, key):
+        self.storage[key] = request.content.getvalue()
 
 
-@route('/<key>', methods=['POST'])
-def set_key(request, key):
-    _storage[key] = request.content.getvalue()
+    @app.route('/<key>', methods=['GET'])
+    def get_key(self, request, key):
+        return self._storage[key]
 
 
-@route('/<key>', methods=['GET'])
-def get_key(request, key):
-    return _storage[key]
-
-
-__all__ = ['resource']
+__all__ = ['Service']
