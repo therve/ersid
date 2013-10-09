@@ -19,19 +19,19 @@ After running ./bin/service, you can the following operations:
 
 Set "mykey" to "myvalue":
 
-$ curl -XPOST -d myvalue http://localhost:8080/mykey
+    $ curl -XPOST -d myvalue http://localhost:8080/mykey
 
 Fetch "mykey":
 
-$ curl http://localhost:8080/mykey
+    $ curl http://localhost:8080/mykey
 
 
 # Contributors
 
-Christopher Armstrong (http://github.com/radeex)
-Thomas Hervé (http://github.com/therve)
-Ying Li (http://github.com/cyli)
-Duncan McGreggor (http://github.com/oubiwann)
+- Christopher Armstrong (http://github.com/radeex)
+- Thomas Hervé (http://github.com/therve)
+- Ying Li (http://github.com/cyli)
+- Duncan McGreggor (http://github.com/oubiwann)
 
 
 # License
