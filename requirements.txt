@@ -3,3 +3,4 @@ klein
 pycrypto
 pyasn1
 MySQL-python
+treq
