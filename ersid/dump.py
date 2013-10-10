@@ -4,9 +4,14 @@ from twisted.internet.task import LoopingCall
 
 
 def backup(service, filename):
-    out = file(filename, 'w')
-    out.write(json.dumps(service.storage.getAll()))
-    out.close()
+    d = service.storage.getAll()
+
+    def gotAll(data):
+        out = file(filename, 'w')
+        out.write(json.dumps(data))
+        out.close()
+
+    return d.addCallback(gotAll)
 
 
 def startLoop(interval, service, filename):
