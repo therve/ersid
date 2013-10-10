@@ -32,7 +32,7 @@ class MySQLStorage(object):
             if result:
                 return self._pool.runOperation(
                     "UPDATE ersid_data SET ersid_value = %s WHERE "
-                    "ersid_key = %s", (key, data))
+                    "ersid_key = %s", (data, key))
             else:
                 return self._pool.runOperation(
                     "INSERT INTO ersid_data VALUES (%s, %s)", (key, data))
