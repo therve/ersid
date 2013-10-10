@@ -5,7 +5,7 @@ from twisted.internet.task import LoopingCall
 
 def backup(service, filename):
     out = file(filename, 'w')
-    out.write(json.dumps(service.storage))
+    out.write(json.dumps(service.storage.getAll()))
     out.close()
 
 

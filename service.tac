@@ -1,9 +1,9 @@
 from twisted.web.server import Site
 from twisted.application import service, internet
 
-from ersid import backdoor, rest, dump
+from ersid import backdoor, rest, dump, storage
 
-svc = rest.Service()
+svc = rest.Service(storage.DictStorage())
 
 application = service.Application("Ersid application")
 

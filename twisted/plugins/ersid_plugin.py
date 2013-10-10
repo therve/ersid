@@ -6,7 +6,7 @@ from twisted.application import service, internet
 from twisted.web.server import Site
 from twisted.python.usage import Options
 
-from ersid import backdoor, rest, dump
+from ersid import backdoor, rest, dump, storage
 
 
 class ErsidOptions(Options):
@@ -28,7 +28,7 @@ class ErsidPlugin(object):
 
     def makeService(self, options):
         parent = service.MultiService()
-        svc = rest.Service()
+        svc = rest.Service(storage.DictStorage())
         backdoorService = internet.TCPServer(
             options['manhole-port'], backdoor.makeFactory({'service': svc}))
         backdoorService.setServiceParent(parent)
