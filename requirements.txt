@@ -2,3 +2,4 @@ Twisted>=13.1
 klein
 pycrypto
 pyasn1
+MySQL-python
